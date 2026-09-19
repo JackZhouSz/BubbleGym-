@@ -13,9 +13,8 @@
 <sup>2</sup>Independent Researcher &nbsp;&nbsp;
 <sup>3</sup>Shanghai Jiao Tong University
 
-[Paper (ACM DL)](https://doi.org/10.1145/3829340.3842193) ·
-[Project page](index.html) ·
-[Benchmark CSV](dataset/bubble_gym/dataset_bubblegym_10k.csv)
+[Paper (author's version)](https://drive.google.com/file/d/1zbNWpLHeS4T3vRF14Bb3kKyYksr4LAya/view?usp=sharing) ·
+[Project page](https://stanford-gfxsim.github.io/BubbleGym/)
 
 ## Abstract
 
@@ -24,21 +23,22 @@ The resonant frequency of a bubble depends critically on its size, shape, and
 proximity to nearby boundaries, and is governed by the capacitance of the bubble
 in the exterior mixed-boundary Laplace problem. Existing bubble-frequency models
 face a difficult trade-off: spherical approximations are efficient but inaccurate
-for deformed bubbles common in fluid simulations, incurring multiple semitones of
-pitch error, whereas boundary element methods (BEM) accurately account for
-nonspherical geometry but are prohibitively expensive.
-
-We present *BubbleGym*, a framework for efficient, shape-aware bubble source
-modeling. It introduces a benchmark dataset of 10k nonspherical bubble meshes
-with ground-truth resonant frequencies. We first propose a moment-matching
-ellipsoidal proxy model, which improves efficiency but remains limited on
-strongly deformed shapes, then adopt a learned, compact, scale-invariant mapping
-from a curated set of shape features to resonant frequency. The resulting model
-runs up to 1428× faster than BEM while holding mean frequency error below 1 %
-(under 17 cents, beneath the perceptual JND for transient sounds) on the test
-set. Integrated into a complete water-sound synthesis pipeline, it enables
-high-fidelity audio for complex, bubble-rich scenes at a fraction of the cost of
-direct BEM evaluation.
+for deformed bubbles common in fluid simulations (multiple semitones of pitch
+error), whereas boundary element methods (BEM) accurately account for
+nonspherical geometry but are prohibitively expensive. A practical method for
+bubble frequency estimation is, therefore, highly desirable for the efficient
+authoring of physics-based water sounds. In this paper, we present *BubbleGym*,
+a framework for efficient, shape-aware bubble source modeling. BubbleGym
+introduces a benchmark dataset of 10k nonspherical bubble meshes with
+ground-truth frequencies. We first propose a moment-matching ellipsoidal proxy
+model that improves efficiency but remains limited when handling strongly
+deformed shapes, such as bent bubbles. We then adopt a learned, compact,
+scale-invariant mapping from a curated set of bubble shape features to resonant
+frequency. We observe that the resulting model runs up to 1428× faster than BEM
+while maintaining a mean error of less than 1% (under 17 cents, below the
+perceptual JND for transient sounds) on the test set. Integrated into a complete
+water-sound synthesis pipeline, our method enables high-fidelity audio for
+complex, bubble-rich scenes at a fraction of the cost of direct BEM evaluation.
 
 ## What is here
 
@@ -86,17 +86,6 @@ pip install -r requirements.txt             # full stack: torch, bempp-cl, ...
 ```
 
 Run everything from the repository root with `PYTHONPATH=python`.
-
-### Configuration
-
-Three environment variables point the scripts at data that lives outside the
-repository. All are optional; each script's default is the path shown.
-
-| Variable | What it points at | Default |
-|---|---|---|
-| `BUBBLEGYM_MESH_ROOT` | the 10k benchmark meshes, from the separate archive | `dataset/bubble_gym/meshes10k` |
-| `LANGLOIS2016_MESH_ROOT` | the Langlois et al. 2016 source meshes, for thumbnails | `dataset/langlois2016/individual_bubbles` |
-| `BUBBLEGYM_LBM_ROOT` | your own LBM output, for the per-scene timing sweeps | the scene path given on the command line |
 
 **Predict frequencies for a scene.** Each scene ships one
 `trackedBubInfo_<model>.txt` per frequency model, all sharing one bubble graph

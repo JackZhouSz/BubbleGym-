@@ -80,18 +80,10 @@ figcaption{font-size:14.5px; color:var(--muted); margin-top:9px}
             border-radius:6px; background:var(--panel)}
 @media (max-width:700px){ .frames{gap:5px} }
 
-/* Somewhere for the scene's supplemental video to land. Holds a 16:9 box so
-   the page does not reflow when the real file replaces it. */
-.videoslot{
-  aspect-ratio:16/9; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; text-align:center; gap:6px;
-  padding:20px; color:var(--muted);
-  background:var(--panel); border:1px dashed var(--rule); border-radius:8px;
-}
-.videoslot .vs-ico{font-size:28px; line-height:1; color:var(--accent)}
-.videoslot .vs-hint{font-size:13.5px; max-width:44ch}
-.scenevideo{width:100%; height:auto; display:block; border-radius:8px;
-            border:1px solid var(--rule); background:#000}
+/* The scene's supplemental video (YouTube embed); aspect-ratio keeps it 16:9
+   at any width. */
+.scenevideo{width:100%; aspect-ratio:16/9; height:auto; display:block;
+            border-radius:8px; border:1px solid var(--rule); background:#000}
 
 table{border-collapse:collapse; width:100%; font-size:15px; margin-bottom:16px}
 th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--rule);

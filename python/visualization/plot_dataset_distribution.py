@@ -51,7 +51,8 @@ from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 
 # Langlois2016 pouring meshes, flat. Kept for the scripts that import this module;
 # this figure plots the BubbleGym dataset, whose meshes live under
-# DEFAULT_BUBBLE_MESH_ROOT in per-source folders.
+# DEFAULT_BUBBLE_MESH_ROOT in per-source folders. Set LANGLOIS2016_MESH_ROOT to
+# override the path.
 DEFAULT_MESH_ROOT = Path(os.environ.get("LANGLOIS2016_MESH_ROOT", "dataset/langlois2016/individual_bubbles"))
 
 # The 10k benchmark's .obj archive, split into VOF/ and LBM/.
