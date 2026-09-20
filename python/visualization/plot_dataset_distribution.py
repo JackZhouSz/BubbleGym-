@@ -5,7 +5,7 @@ For each row in the dataset we:
   * Compute Wadell sphericity  Phi = pi^(1/3) * (6*V)^(2/3) / A
     and non-sphericity         non_sph = 1 - clip(Phi, 0, 1)
   * Plot (non_sphericity, frequency) as a scatter point, where `frequency`
-    is the BEMPP P1-DP1 Dirichlet capacitance-based Minnaert frequency
+    is the BEMPP P1-DP0 Dirichlet capacitance-based Minnaert frequency
     stored in the dataset.
 
 On top of the scatter we overlay thumbnail callouts for a handful of bubbles
@@ -812,7 +812,7 @@ def main() -> None:
     parser.add_argument("--sample-pool", type=int, default=24,
                         help="How many nearest candidates per target --seed draws from.")
     parser.add_argument("--freq-col", type=str, default="frequency",
-                        help="Column to use for frequency (BEMPP P1-DP1 is stored in 'frequency').")
+                        help="Column to use for frequency (BEMPP P1-DP0 is stored in 'frequency').")
     parser.add_argument("--thumb-zoom", type=float, default=0.17,
                         help=("Zoom factor for thumbnail images inside callouts (smaller = smaller "
                               "windows), expressed for a --thumb-ref-px-wide source image."))
