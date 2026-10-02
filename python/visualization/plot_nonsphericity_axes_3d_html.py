@@ -547,7 +547,7 @@ def lbm_mesh_thumbnail_sources(
 # The opening view. Shared by the layout and by the panel's reset button, so
 # "default" means one thing rather than two that can drift apart.
 DEFAULT_CAMERA = {
-    "eye": {"x": 1.65, "y": 1.65, "z": 1.1},
+    "eye": {"x": -1.65, "y": 1.65, "z": 0.6},
     "center": {"x": 0.0, "y": 0.0, "z": 0.0},
     "up": {"x": 0.0, "y": 0.0, "z": 1.0},
 }
